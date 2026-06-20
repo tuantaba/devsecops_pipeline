@@ -53,6 +53,8 @@ Run tests:
 pytest
 ```
 
+The test command also writes `coverage.xml`, which is consumed by SonarQube.
+
 Build and run with Docker:
 
 ```powershell
@@ -108,7 +110,67 @@ Dockerfile instruction notes:
 | `REVIEW_APP_URL` | Optional | Enables review environment deployment jobs for merge requests. |
 | `ZAP_TARGET_URL` | Optional | Enables OWASP ZAP baseline DAST against a running app. |
 | `SEMGREP_RULES` | Optional | Defaults to `p/ci`; change to a Semgrep ruleset or local config. |
+| `SONAR_HOST_URL` | Optional | Enables the GitLab SonarQube scanner job, for example `http://sonarqube.example.com:9000`. |
+| `SONAR_TOKEN` | Optional | SonarQube token used by the GitLab scanner job. Store this as a masked CI/CD variable. |
 | `CI_REGISTRY_*` | Built in | Used by GitLab to authenticate image build, push, and scan jobs. |
+
+## SonarQube
+
+The project is configured for SonarQube in [sonar-project.properties](sonar-project.properties):
+
+- Project key: `devsecops-demo-api`
+- Project name: `DevSecOps Demo API`
+- Source folder: `app`
+- Test folder: `tests`
+- Coverage report path: `coverage.xml`
+
+Run SonarQube locally with Docker Compose:
+
+```powershell
+docker compose -f docker-compose.sonarqube.yml up -d
+```
+
+Open SonarQube at `http://localhost:9000`. The default local login for a fresh SonarQube instance is usually `admin` / `admin`; SonarQube will prompt you to change it. Create a project token from SonarQube before running the scanner.
+
+If SonarQube fails to start on Linux, set the host virtual memory limit first:
+
+```bash
+sudo sysctl -w vm.max_map_count=524288
+sudo sysctl -w fs.file-max=131072
+```
+
+Generate the coverage report:
+
+```powershell
+pip install -r requirements-dev.txt
+pytest
+```
+
+Run `sonar-scanner` manually from the repository root:
+
+```powershell
+sonar-scanner `
+  -Dsonar.host.url=http://localhost:9000 `
+  -Dsonar.token=<your-sonarqube-token>
+```
+
+Stop the local SonarQube stack:
+
+```powershell
+docker compose -f docker-compose.sonarqube.yml down
+```
+
+Suggested Quality Gate:
+
+- Blocker issues: `0`
+- Critical issues: `0`
+- Coverage: greater than `80%`
+- Duplicated lines: less than `3%`
+- Maintainability rating: `A`
+- Reliability rating: `A`
+- Security rating: `A`
+
+In GitLab CI, set `SONAR_HOST_URL` and `SONAR_TOKEN` as CI/CD variables to enable the `quality:sonarqube` job. The `test:pytest` job publishes `coverage.xml`, and the SonarQube job imports it during analysis.
 
 ## Recommended Branch Protection
 

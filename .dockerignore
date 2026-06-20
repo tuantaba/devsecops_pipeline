@@ -13,10 +13,15 @@ __pycache__
 *.pyd
 *.egg-info
 .coverage
+coverage.xml
 htmlcov
+.sonar
+.scannerwork
 tests
 pytest.ini
 requirements-dev.txt
+sonar-project.properties
+docker-compose.sonarqube.yml
 README.md
 NOTES_OF_APPS
 *.json

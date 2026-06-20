@@ -18,7 +18,7 @@ Please generate all required source code files.
 ![alt text](image.png)
 
 -----------------------------------------------------------
-Create a production-ready Dockerfile for this application.
+2. Create a production-ready Dockerfile for this application.
 -----------------------------------------------------------
 Requirements:
 - Use a minimal base image.
@@ -32,3 +32,24 @@ Requirements:
 
 ![alt text](image-1.png)
 
+-----------------------------------------------------------
+3.Add SonarQube integration for this project.
+-----------------------------------------------------------
+Requirements:
+- Create sonar-project.properties.
+- Configure project key, project name, source folder, test folder, coverage report path.
+- Explain how to run SonarQube locally using Docker Compose.
+- Explain how to run sonar-scanner manually.
+- Define suggested Quality Gate:
+  - No blocker issues
+  - No critical issues
+  - Coverage above 80%
+  - Duplicated lines below 3%
+  - Maintainability rating A
+  - Reliability rating A
+  - Security rating A
+
+  ![alt text](image-2.png)
+
+
+  
