@@ -50,6 +50,44 @@ Requirements:
   - Security rating A
 
   ![alt text](image-2.png)
-
-
   
+---------------------------------------------------------------------
+4.Create a complete GitLab CI/CD pipeline for this DevSecOps project.
+---------------------------------------------------------------------
+
+Pipeline stages:
+- validate
+- unit-test
+- sonarqube-scan
+- sast
+- sca
+- secret-scan
+- build-image
+- image-scan
+- dast
+- generate-sbom
+- sign-image
+- production-readiness-check
+
+Requirements:
+- Use GitLab CI syntax.
+- Use Docker image build.
+- Push image to container registry.
+- Run SonarQube scan.
+- Run SAST using Semgrep.
+- Run dependency/SCA scan using Trivy.
+- Run secret scan using Gitleaks.
+- Run container image scan using Trivy.
+- Run DAST using OWASP ZAP baseline scan.
+- Generate SBOM.
+- Sign image using Cosign.
+- Fail pipeline on Critical or High vulnerabilities.
+- Save all security reports as pipeline artifacts.
+- Add comments explaining each job.
+
+-> 
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+    

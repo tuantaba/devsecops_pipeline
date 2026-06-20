@@ -10,11 +10,17 @@ htmlcov/
 .sonar/
 .scannerwork/
 gl-secret-detection-report.json
+gitleaks-report.json
 semgrep-report.json
 trivy-fs-report.json
+trivy-sca-report.json
 trivy-container-report.json
+trivy-image-report.json
 checkov-report.json
 sbom.cdx.json
 sbom.spdx.json
 zap-report.json
 zap-report.html
+cosign.pub
+cosign-verify.txt
+image-tag.txt

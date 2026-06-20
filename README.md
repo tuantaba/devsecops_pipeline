@@ -108,11 +108,15 @@ Dockerfile instruction notes:
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `REVIEW_APP_URL` | Optional | Enables review environment deployment jobs for merge requests. |
-| `ZAP_TARGET_URL` | Optional | Enables OWASP ZAP baseline DAST against a running app. |
+| `ZAP_TARGET_URL` | Required for DAST | Target URL used by OWASP ZAP baseline scan. |
 | `SEMGREP_RULES` | Optional | Defaults to `p/ci`; change to a Semgrep ruleset or local config. |
-| `SONAR_HOST_URL` | Optional | Enables the GitLab SonarQube scanner job, for example `http://sonarqube.example.com:9000`. |
-| `SONAR_TOKEN` | Optional | SonarQube token used by the GitLab scanner job. Store this as a masked CI/CD variable. |
+| `SONAR_HOST_URL` | Required for SonarQube | SonarQube server URL, for example `http://sonarqube.example.com:9000`. |
+| `SONAR_TOKEN` | Required for SonarQube | SonarQube token used by the GitLab scanner job. Store this as a masked CI/CD variable. |
+| `COSIGN_PRIVATE_KEY` | Required for image signing | Cosign private key used by the `sign-image:cosign` job. Store this as a protected and masked CI/CD variable. |
+| `COSIGN_PASSWORD` | Required for image signing | Password for `COSIGN_PRIVATE_KEY`. Store this as a protected and masked CI/CD variable. |
 | `CI_REGISTRY_*` | Built in | Used by GitLab to authenticate image build, push, and scan jobs. |
+
+The complete GitLab pipeline stages are `validate`, `unit-test`, `sonarqube-scan`, `sast`, `sca`, `secret-scan`, `build-image`, `image-scan`, `dast`, `generate-sbom`, `sign-image`, and `production-readiness-check`.
 
 ## SonarQube
 
