@@ -1,0 +1,17 @@
+.trivycache/
+.pytest_cache/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.coverage
+htmlcov/
+gl-secret-detection-report.json
+semgrep-report.json
+trivy-fs-report.json
+trivy-container-report.json
+checkov-report.json
+sbom.cdx.json
+sbom.spdx.json
+zap-report.json
+zap-report.html

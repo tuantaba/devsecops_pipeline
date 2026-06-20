@@ -1,0 +1,34 @@
+# GEN AN APP
+
+Create a simple REST API application for a DevSecOps demo.
+
+Requirements:
+- Use Python FastAPI.
+- API endpoints:
+  - GET /health returns {"status": "ok"}
+  - GET /api/v1/customers/{customerId} returns mock customer data.
+- Add basic error handling.
+- Add unit tests using pytest.
+- Add requirements.txt.
+- Add project structure that is clean and production-ready.
+- Add README section explaining how to run locally.
+
+Please generate all required source code files.
+
+![alt text](image.png)
+
+-----------------------------------------------------------
+Create a production-ready Dockerfile for this application.
+-----------------------------------------------------------
+Requirements:
+- Use a minimal base image.
+- Use multi-stage build if suitable.
+- Run as non-root user.
+- Do not include unnecessary files in the final image.
+- Add HEALTHCHECK if appropriate.
+- Add .dockerignore.
+- Explain every Dockerfile instruction.
+- Provide docker build and docker run commands.
+
+![alt text](image-1.png)
+

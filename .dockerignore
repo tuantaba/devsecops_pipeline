@@ -1,0 +1,25 @@
+.git
+.gitignore
+.gitlab-ci.yml
+.gitlab-ci copy.yml
+.dockerignore
+.pytest_cache
+.venv
+.mypy_cache
+.ruff_cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+.coverage
+htmlcov
+tests
+pytest.ini
+requirements-dev.txt
+README.md
+NOTES_OF_APPS
+*.json
+*.html
+*.md
+*.log
